@@ -1,7 +1,20 @@
 enum Environment { dev, staging, prod }
 
 class Env {
-  static const Environment current = Environment.dev;
+  static const String _flavor =
+      String.fromEnvironment('FLAVOR', defaultValue: 'dev');
+
+  static Environment get current {
+    switch (_flavor) {
+      case 'production':
+      case 'prod':
+        return Environment.prod;
+      case 'staging':
+        return Environment.staging;
+      default:
+        return Environment.dev;
+    }
+  }
 
   static bool get isDev => current == Environment.dev;
   static bool get isStaging => current == Environment.staging;
@@ -11,6 +24,7 @@ class Env {
   static bool get verboseLogging => isDev;
   static bool get showPerformanceOverlay => false;
   static bool get enableMockInference => isDev;
+
   static String get apiBaseUrl {
     switch (current) {
       case Environment.dev:
