@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F2F0FA"/>
+    </radialGradient>
+
+    <style>
+      .pulse {
+        animation: pulse 2.2s ease-in-out infinite;
+        transform-origin: center;
+      }
+
+      .delay1 { animation-delay: 0s; }
+      .delay2 { animation-delay: .3s; }
+      .delay3 { animation-delay: .6s; }
+      .delay4 { animation-delay: .9s; }
+      .delay5 { animation-delay: 1.2s; }
+      .delay6 { animation-delay: 1.5s; }
+
+      @keyframes pulse {
+        0%   { r: 5; opacity: 1; }
+        50%  { r: 9; opacity: .4; }
+        100% { r: 5; opacity: 1; }
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" rx="48" fill="url(#bg)"/>
+
+  <!-- Logo Base -->
+  <circle cx="200" cy="120" r="64" fill="#FFFFFF"/>
+
+  <!-- Network Ring -->
+  <circle
+    cx="200"
+    cy="120"
+    r="42"
+    fill="none"
+    stroke="#7C3AED"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-dasharray="18 10"
+  />
+
+  <!-- Pulsing Nodes -->
+  <circle cx="200" cy="78"  r="5" fill="#7C3AED" class="pulse delay1"/>
+  <circle cx="238" cy="100" r="5" fill="#7C3AED" class="pulse delay2"/>
+  <circle cx="238" cy="140" r="5" fill="#7C3AED" class="pulse delay3"/>
+  <circle cx="200" cy="162" r="5" fill="#7C3AED" class="pulse delay4"/>
+  <circle cx="162" cy="140" r="5" fill="#7C3AED" class="pulse delay5"/>
+  <circle cx="162" cy="100" r="5" fill="#7C3AED" class="pulse delay6"/>
+
+  <!-- Human -->
+  <circle cx="200" cy="112" r="10" fill="#7C3AED"/>
+  <path
+    d="M200 126
+       C186 126 176 140 176 156
+       C176 164 224 164 224 156
+       C224 140 214 126 200 126Z"
+    fill="#7C3AED"
+  />
+
+  <!-- Text -->
+  <text
+    x="200"
+    y="220"
+    text-anchor="middle"
+    font-size="28"
+    font-weight="600"
+    fill="#1A1A2E"
+    font-family="Inter, Helvetica, Arial, sans-serif"
+  >
+    Welcome to HumanNode
+  </text>
+
+  <text
+    x="200"
+    y="248"
+    text-anchor="middle"
+    font-size="14"
+    fill="#6B6B8A"
+    font-family="Inter, Helvetica, Arial, sans-serif"
+  >
+    Your AI. Your device. Anywhere.
+  </text>
+
+</svg>

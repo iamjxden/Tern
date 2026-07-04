@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="AppleSDK" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <scenes><scene sceneID="EHf-IW-A2E"><objects><viewController id="01J-lp-oVM" sceneMemberID="viewController">
+        <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <subviews>
+                <label text="Nomad" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Gdb-4P-jHk">
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Gdb-4P-jHk" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="aTz-j7-xoB"/>
+                <constraint firstItem="Gdb-4P-jHk" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="fKD-n6-KpL"/>
+            </constraints>
+        </view></viewController></objects></scene>
+    </scenes>
+</document>

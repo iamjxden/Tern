@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" targetRuntime="AppleSDK" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <scenes><scene sceneID="tne-QT-ifu"><objects><viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+        <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC"/></viewController></objects></scene>
+    </scenes>
+</document>

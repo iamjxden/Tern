@@ -1,0 +1,85 @@
+{
+  "version": 2,
+  "provider": "ollama",
+  "models": [
+    {
+      "id": "ornith:9b",
+      "display_name": "Ornith 9B",
+      "tagline": "Fast, capable coding agent",
+      "category": "coding",
+      "role": "text",
+      "size_gb": 5.6,
+      "context_window": 256000,
+      "effort_levels": ["standard"],
+      "is_default": true
+    },
+    {
+      "id": "ornith:35b",
+      "display_name": "Ornith 35B",
+      "tagline": "For your toughest coding challenges",
+      "category": "coding",
+      "role": "text",
+      "size_gb": 21,
+      "context_window": 256000,
+      "effort_levels": ["standard"],
+      "is_default": false
+    },
+    {
+      "id": "glm-5.2:cloud",
+      "display_name": "GLM 5.2",
+      "tagline": "Strongest open model for long-horizon work",
+      "category": "general",
+      "role": "text",
+      "size_gb": 0,
+      "context_window": 976000,
+      "effort_levels": ["low", "high", "max"],
+      "is_default": false,
+      "cloud": true
+    },
+    {
+      "id": "yi-coder:9b",
+      "display_name": "Yi Coder 9B",
+      "tagline": "52 languages, 128K context",
+      "category": "coding",
+      "role": "text",
+      "size_gb": 5.2,
+      "context_window": 128000,
+      "effort_levels": ["standard"],
+      "is_default": false
+    },
+    {
+      "id": "openaimunich/llm",
+      "display_name": "Munich",
+      "tagline": "Agent-ready general model",
+      "category": "general",
+      "role": "text",
+      "size_gb": 2.0,
+      "context_window": 128000,
+      "effort_levels": ["standard"],
+      "is_default": false
+    },
+    {
+      "id": "openbmb/minicpm-o4.5",
+      "display_name": "MiniCPM Vision",
+      "tagline": "Vision, speech and live streaming",
+      "category": "vision",
+      "role": "vision",
+      "size_gb": 6.1,
+      "context_window": 40000,
+      "effort_levels": ["standard"],
+      "is_default": false
+    },
+    {
+      "id": "gabegoodhart/granite4.1-speech",
+      "display_name": "Tern Voice",
+      "tagline": "Speech understanding and response",
+      "category": "speech",
+      "role": "speech",
+      "size_gb": 1.4,
+      "context_window": 8000,
+      "effort_levels": ["standard"],
+      "is_default": false,
+      "auto_switch": true
+    }
+  ]
+}

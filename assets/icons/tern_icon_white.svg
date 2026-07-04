@@ -1,0 +1,55 @@
+<svg
+  width="512"
+  height="512"
+  viewBox="0 0 512 512"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- Background -->
+  <rect width="512" height="512" rx="96" fill="#0B0D12"/>
+
+  <!-- Network Ring -->
+  <circle
+    cx="256"
+    cy="220"
+    r="92"
+    fill="none"
+    stroke="#F5F2ED"
+    stroke-width="12"
+    stroke-linecap="round"
+    stroke-dasharray="40 22"
+  />
+
+  <!-- Nodes -->
+  <circle cx="256" cy="128" r="12" fill="#F5F2ED"/>
+  <circle cx="344" cy="176" r="12" fill="#F5F2ED"/>
+  <circle cx="344" cy="264" r="12" fill="#F5F2ED"/>
+  <circle cx="256" cy="312" r="12" fill="#F5F2ED"/>
+  <circle cx="168" cy="264" r="12" fill="#F5F2ED"/>
+  <circle cx="168" cy="176" r="12" fill="#F5F2ED"/>
+
+  <!-- Human Figure -->
+  <circle cx="256" cy="200" r="22" fill="#F5F2ED"/>
+  <path
+    d="M256 230
+       C230 230 214 250 214 274
+       V298
+       C214 312 298 312 298 298
+       V274
+       C298 250 282 230 256 230Z"
+    fill="#F5F2ED"
+  />
+
+  <!-- Brand Text -->
+  <text
+    x="256"
+    y="420"
+    text-anchor="middle"
+    fill="#F5F2ED"
+    font-size="56"
+    font-weight="500"
+    font-family="Inter, Helvetica, Arial, sans-serif"
+    letter-spacing="-1"
+  >
+    HumanNode
+  </text>
+</svg>

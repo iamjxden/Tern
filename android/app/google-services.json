@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "44456740583",
+    "project_id": "tern-500922",
+    "storage_bucket": "tern-500922.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44456740583:android:b00cf0aba3d41f2e",
+        "android_client_info": {
+          "package_name": "com.aetheron.tern"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "44456740583-nc0o9ljqqr1jafmnuc9oeaj8s3e19l37.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aetheron.tern",
+            "certificate_hash": "516F6F603F7AB9B499"
+          }
+        },
+        {
+          "client_id": "44456740583-lrkkqm7k3ao2l76ofe6us8oq2vnhp4mp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "placeholder_replace_if_needed"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "44456740583-lrkkqm7k3ao2l76ofe6us8oq2vnhp4mp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

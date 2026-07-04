@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="cardBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F1020" />
+      <stop offset="100%" stop-color="#16172D" />
+    </linearGradient>
+    
+    <!-- Accent gradient -->
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#A78BFA" />
+    </linearGradient>
+    
+    <!-- Shimmer -->
+    <linearGradient id="shimmer" x1="-1" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0" />
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+      <animate attributeName="x1" from="-1" to="1" dur="1.6s" repeatCount="indefinite" />
+      <animate attributeName="x2" from="0" to="2" dur="1.6s" repeatCount="indefinite" />
+    </linearGradient>
+    
+    <!-- Glow -->
+    <filter id="glow">
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#7C3AED" flood-opacity="0.45" />
+    </filter>
+  </defs>
+  
+  <!-- Card -->
+  <rect width="200" height="200" rx="32" fill="url(#cardBg)" />
+  
+  <!-- Item 1 -->
+  <g>
+    <circle cx="36" cy="70" r="10" fill="url(#accent)" filter="url(#glow)" />
+    <rect x="56" y="60" width="110" height="10" rx="5" fill="#2A2B4A" />
+    <rect x="56" y="60" width="110" height="10" rx="5" fill="url(#shimmer)" />
+    <rect x="56" y="76" width="70" height="8" rx="4" fill="#3A3B63" />
+  </g>
+  
+  <!-- Item 2 -->
+  <g>
+    <circle cx="36" cy="120" r="10" fill="url(#accent)" filter="url(#glow)" />
+    <rect x="56" y="110" width="120" height="10" rx="5" fill="#2A2B4A" />
+    <rect x="56" y="110" width="120" height="10" rx="5" fill="url(#shimmer)" />
+    <rect x="56" y="126" width="90" height="8" rx="4" fill="#3A3B63" />
+  </g>
+</svg>
