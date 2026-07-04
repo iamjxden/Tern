@@ -77,7 +77,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ),
               const SizedBox(height: 40),
               Icon(Icons.auto_awesome_outlined,
-                  size: 88, color: HumanNodeTheme.textSecondary.withValues(alpha: 0.4)),
+                  size: 88, color: HumanNodeTheme.textSecondary.withOpacity(0.4)),
               const SizedBox(height: 24),
               const Text(
                 AppConfig.tagline,

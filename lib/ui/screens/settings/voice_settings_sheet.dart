@@ -91,13 +91,13 @@ class _VoiceSettingsSheetState extends State<VoiceSettingsSheet> {
                     borderRadius: BorderRadius.circular(20),
                     color: HumanNodeTheme.surfaceCard,
                     boxShadow: selected
-                        ? [BoxShadow(color: p.glowColor.withValues(alpha: 0.4), blurRadius: 24, spreadRadius: 4)]
+                        ? [BoxShadow(color: p.glowColor.withOpacity(0.4), blurRadius: 24, spreadRadius: 4)]
                         : [],
                     gradient: selected
                         ? LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
-                            colors: [HumanNodeTheme.surfaceCard, p.glowColor.withValues(alpha: 0.3)],
+                            colors: [HumanNodeTheme.surfaceCard, p.glowColor.withOpacity(0.3)],
                           )
                         : null,
                   ),
@@ -127,7 +127,7 @@ class _VoiceSettingsSheetState extends State<VoiceSettingsSheet> {
                   shape: BoxShape.circle,
                   color: i == _selectedIndex
                       ? HumanNodeTheme.textPrimary
-                      : HumanNodeTheme.textSecondary.withValues(alpha: 0.4),
+                      : HumanNodeTheme.textSecondary.withOpacity(0.4),
                 ),
               );
             }),

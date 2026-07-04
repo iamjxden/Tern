@@ -191,7 +191,7 @@ class _ModelRow extends StatelessWidget {
                   Text(
                     model.tagline,
                     style: TextStyle(
-                      color: isSelected ? HumanNodeTheme.primary.withValues(alpha: 0.8) : HumanNodeTheme.textSecondary,
+                      color: isSelected ? HumanNodeTheme.primary.withOpacity(0.8) : HumanNodeTheme.textSecondary,
                       fontSize: 13,
                     ),
                   ),

@@ -240,7 +240,7 @@ class _DrawerPanel extends ConsumerWidget {
                         BoxShadow(
                           color: modelsState.ollamaReachable
                               ? const Color(0x6622C55E)
-                              : Colors.redAccent.withValues(alpha: 0.4),
+                              : Colors.redAccent.withOpacity(0.4),
                           blurRadius: 6,
                         ),
                       ],

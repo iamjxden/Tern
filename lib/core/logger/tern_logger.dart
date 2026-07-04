@@ -1,5 +1,6 @@
 // TernLogger — re-export of HumanNodeLogger under the Tern name.
 // Both names are supported during the migration so nothing breaks.
+import 'humannode_logger.dart';
 export 'humannode_logger.dart' show HumanNodeLogger;
 
 /// Alias so new files can import TernLogger without breaking old ones.
