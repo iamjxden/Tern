@@ -90,6 +90,9 @@ jobs:
             echo "Generated temporary keystore"
           fi
 
+      - name: Print keystore base64
+        run: base64 -w 0 android/app/keystore.jks
+
       - name: Print SHA-1
         run: |
           if [ -n "${{ secrets.KEYSTORE_BASE64 }}" ]; then
