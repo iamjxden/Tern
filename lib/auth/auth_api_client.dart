@@ -15,7 +15,7 @@ class TernUser {
   final String? name;
   final String? displayName;
   final String? avatar;
-  final String? preferences;
+  final Map<String, dynamic>? preferences;
 
   const TernUser({
     required this.id,
@@ -31,8 +31,10 @@ class TernUser {
         email: json['email'] as String,
         name: json['name'] as String?,
         displayName: json['displayName'] as String?,
-        avatar: json['avatar'] as String?,
-        preferences: json['preferences'] as String?,
+        avatar: json['avatarUrl'] as String?,
+        preferences: json['preferences'] == null
+            ? null
+            : Map<String, dynamic>.from(json['preferences'] as Map),
       );
 }
 
@@ -57,7 +59,8 @@ class AuthApiClient {
     if (res.statusCode >= 200 && res.statusCode < 300 && body['success'] == true) {
       return onData(body['data'] as Map<String, dynamic>);
     }
-    throw AuthApiException(body['error'] as String? ?? 'Request failed');
+    final error = body['error'];
+    throw AuthApiException(error is String ? error : 'Request failed');
   }
 
   Future<AuthResult> signInWithGoogle(String idToken) async {
@@ -78,7 +81,11 @@ class AuthApiClient {
       headers: _jsonHeaders,
       body: jsonEncode({'email': email}),
     );
-    _unwrap(res, (data) => data);
+    final body = jsonDecode(res.body) as Map<String, dynamic>;
+    if (res.statusCode < 200 || res.statusCode >= 300 || body['success'] != true) {
+      final error = body['error'];
+      throw AuthApiException(error is String ? error : 'Failed to send code');
+    }
   }
 
   Future<AuthResult> verifyOtp(String email, String code) async {
@@ -109,7 +116,7 @@ class AuthApiClient {
     String token, {
     String? name,
     String? displayName,
-    String? preferences,
+    Map<String, dynamic>? preferences,
   }) async {
     final res = await _http.put(
       Uri.parse('$baseUrl${AppConfig.userMeEndpoint}'),
