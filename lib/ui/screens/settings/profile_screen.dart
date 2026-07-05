@@ -59,7 +59,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
         parsed = {'value': raw};
       }
     }
-    await ref.read(authProvider.notifier).updateProfile(preferences: parsed);
+    await ref.read(authProvider.notifier).updateProfile(preferences: parsed != null ? jsonEncode(parsed) : null);
     if (mounted) setState(() => _savingPreferences = false);
   }
 
