@@ -15,7 +15,7 @@ class TernUser {
   final String? name;
   final String? displayName;
   final String? avatar;
-  final Map<String, dynamic>? preferences;
+  final String? preferences;
 
   const TernUser({
     required this.id,
@@ -34,7 +34,9 @@ class TernUser {
         avatar: json['avatarUrl'] as String?,
         preferences: json['preferences'] == null
             ? null
-            : Map<String, dynamic>.from(json['preferences'] as Map),
+            : json['preferences'] is String
+                ? json['preferences'] as String
+                : json['preferences'].toString(),
       );
 }
 
@@ -116,7 +118,7 @@ class AuthApiClient {
     String token, {
     String? name,
     String? displayName,
-    Map<String, dynamic>? preferences,
+    String? preferences,
   }) async {
     final res = await _http.put(
       Uri.parse('$baseUrl${AppConfig.userMeEndpoint}'),
@@ -124,7 +126,7 @@ class AuthApiClient {
       body: jsonEncode({
         if (name != null) 'name': name,
         if (displayName != null) 'displayName': displayName,
-        if (preferences != null) 'preferences': preferences,
+        if (preferences != null) 'preferences': {'value': preferences},
       }),
     );
     return _unwrap(res, (data) => TernUser.fromJson(data));
