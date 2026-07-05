@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -24,7 +25,10 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     final user = ref.read(authProvider).user;
     _nameController = TextEditingController(text: user?.name ?? '');
     _displayNameController = TextEditingController(text: user?.displayName ?? '');
-    _preferencesController = TextEditingController(text: user?.preferences ?? '');
+    final prefs = user?.preferences;
+    _preferencesController = TextEditingController(
+      text: prefs == null ? '' : jsonEncode(prefs),
+    );
   }
 
   @override
@@ -46,9 +50,16 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
 
   Future<void> _savePreferences() async {
     setState(() => _savingPreferences = true);
-    await ref.read(authProvider.notifier).updateProfile(
-          preferences: _preferencesController.text.trim(),
-        );
+    final raw = _preferencesController.text.trim();
+    Map<String, dynamic>? parsed;
+    if (raw.isNotEmpty) {
+      try {
+        parsed = Map<String, dynamic>.from(jsonDecode(raw) as Map);
+      } catch (_) {
+        parsed = {'value': raw};
+      }
+    }
+    await ref.read(authProvider.notifier).updateProfile(preferences: parsed);
     if (mounted) setState(() => _savingPreferences = false);
   }
 

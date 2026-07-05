@@ -166,7 +166,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
     state = state.copyWith(status: AuthStatus.signedOut, pendingEmail: null, error: null);
   }
 
-  Future<bool> updateProfile({String? name, String? displayName, String? preferences}) async {
+  Future<bool> updateProfile({String? name, String? displayName, Map<String, dynamic>? preferences}) async {
     final token = await _sessionStore.getToken();
     if (token == null) return false;
     try {
