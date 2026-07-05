@@ -63,7 +63,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
             GoogleSignIn(
               serverClientId: AppConfig.apiBaseUrl.isEmpty
                   ? null
-                  : '44456740583-lrkkqm7k3ao2l76ofe6us8oq2vnhp4mp.apps.googleusercontent.com',
+                  : '558042548216-nt3qddabn88se0u8vg14fgf3u1f7j9n9.apps.googleusercontent.com',
               scopes: const ['email', 'profile'],
             ),
         super(const AuthState()) {
@@ -166,7 +166,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
     state = state.copyWith(status: AuthStatus.signedOut, pendingEmail: null, error: null);
   }
 
-  Future<bool> updateProfile({String? name, String? displayName, Map<String, dynamic>? preferences}) async {
+  Future<bool> updateProfile({String? name, String? displayName, String? preferences}) async {
     final token = await _sessionStore.getToken();
     if (token == null) return false;
     try {

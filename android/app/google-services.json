@@ -1,28 +1,28 @@
 {
   "project_info": {
-    "project_number": "44456740583",
-    "project_id": "tern-500922",
-    "storage_bucket": "tern-500922.appspot.com"
+    "project_number": "558042548216",
+    "project_id": "tern-500920",
+    "storage_bucket": "tern-500920.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:44456740583:android:b00cf0aba3d41f2e",
+        "mobilesdk_app_id": "1:558042548216:android:b00cf0aba3d41f2e",
         "android_client_info": {
           "package_name": "com.aetheron.tern"
         }
       },
       "oauth_client": [
         {
-          "client_id": "44456740583-nc0o9ljqqr1jafmnuc9oeaj8s3e19l37.apps.googleusercontent.com",
+          "client_id": "558042548216-kauavvk0399f2pulatg1mvkv8iibuhr4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.aetheron.tern",
-            "certificate_hash": "516F6F603F7AB9B499"
+            "certificate_hash": "28996BEDA8E46EE9C095BB0B43DD70DD65970E8F"
           }
         },
         {
-          "client_id": "44456740583-lrkkqm7k3ao2l76ofe6us8oq2vnhp4mp.apps.googleusercontent.com",
+          "client_id": "558042548216-nt3qddabn88se0u8vg14fgf3u1f7j9n9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -35,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "44456740583-lrkkqm7k3ao2l76ofe6us8oq2vnhp4mp.apps.googleusercontent.com",
+              "client_id": "558042548216-nt3qddabn88se0u8vg14fgf3u1f7j9n9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
