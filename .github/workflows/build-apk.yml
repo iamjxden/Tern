@@ -44,7 +44,6 @@ jobs:
       - name: Extract version
         id: version
         run: |
-          # e.g. "1.0.0+1"
           FULL=$(grep '^version:' pubspec.yaml | awk '{print $2}' | tr -d '\r')
           VERSION=$(echo "$FULL" | cut -d'+' -f1)
           BUILD=$(echo "$FULL" | cut -d'+' -f2)
@@ -56,34 +55,52 @@ jobs:
           echo "tag=$TAG"           >> $GITHUB_OUTPUT
           echo "release_name=Tern v${VERSION} (build ${BUILD})" >> $GITHUB_OUTPUT
 
-      # ── Optional: decode keystore from secret ─────────────────────────────
-      # Set KEYSTORE_BASE64, KEY_ALIAS, KEY_PASSWORD, STORE_PASSWORD in
-      # GitHub Secrets to produce a signed APK. Without these secrets the
-      # build falls back to a debug-signed APK that can still be sideloaded.
-      - name: Decode keystore
-        if: ${{ env.KEYSTORE_BASE64 != '' }}
-        env:
-          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
-        run: |
-          echo "$KEYSTORE_BASE64" | base64 --decode > android/app/keystore.jks
-
-      - name: Create key.properties
-        if: ${{ env.KEYSTORE_BASE64 != '' }}
+      - name: Setup keystore
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
           STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
         run: |
-          cat > android/key.properties << EOF
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 --decode > android/app/keystore.jks
+            cat > android/key.properties << PROPS
           storePassword=$STORE_PASSWORD
           keyPassword=$KEY_PASSWORD
           keyAlias=$KEY_ALIAS
           storeFile=keystore.jks
-          EOF
+          PROPS
+            echo "Using release keystore"
+          else
+            keytool -genkeypair -v \
+              -keystore android/app/keystore.jks \
+              -alias tern \
+              -keyalg RSA \
+              -keysize 2048 \
+              -validity 10000 \
+              -storepass ternpass \
+              -keypass ternpass \
+              -dname "CN=Tern,O=Aetheron,C=US" 2>/dev/null
+            cat > android/key.properties << PROPS
+          storePassword=ternpass
+          keyPassword=ternpass
+          keyAlias=tern
+          storeFile=keystore.jks
+          PROPS
+            echo "Generated temporary keystore"
+          fi
 
-      - name: Print debug SHA-1
-        run: keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android 2>/dev/null | grep "SHA1:"
+      - name: Print SHA-1
+        run: |
+          if [ -n "${{ secrets.KEYSTORE_BASE64 }}" ]; then
+            keytool -list -v -keystore android/app/keystore.jks \
+              -alias "${{ secrets.KEY_ALIAS }}" \
+              -storepass "${{ secrets.STORE_PASSWORD }}" 2>/dev/null | grep "SHA1:"
+          else
+            keytool -list -v -keystore android/app/keystore.jks \
+              -alias tern \
+              -storepass ternpass 2>/dev/null | grep "SHA1:"
+          fi
 
       - name: Build release APK
         run: flutter build apk --release --dart-define=FLAVOR=production
@@ -119,15 +136,6 @@ jobs:
             1. Download **tern-${{ steps.version.outputs.tag }}.apk** from Assets below
             2. On your Android device: Settings → Security → enable **Install from unknown sources**
             3. Open the downloaded APK and install
-
-            ### What's in Tern
-            - Agentic chat powered by local Ollama models
-            - 11 built-in tools (web search, notes, memory, bash, …)
-            - Conversation history synced via Tern backend
-            - Projects with system prompts and knowledge base
-            - Notes — full create / edit / delete
-            - Sign-in via Email OTP or Google
-            - Dark theme · 5 localisations
 
             ### Requirements
             - Android 7.0+ (minSdk 24)
